@@ -10,44 +10,39 @@
 // It is initialised in main().
 static cstr_alphabet ALPHA;
 
-// Linked list of preprocessed arrays
-struct sa
+// Linked list of preprocessed trees
+struct suf_tree
 {
     const char *chr_name;  // chromosome name; data stored in fasta record
-    cstr_const_sslice x;   // the chromosome seq. Stored in the fasta record
-    cstr_suffix_array *sa; // the suffix array. We own it.
-    struct sa *next;       // next suffix array in the linked list.
+    cstr_sslice *x_buf;    // buffer for the remapped sequence. We own it.
+    cstr_suffix_tree *st;  // the suffix tree. We also own it.
+    struct suf_tree *next; // next suffix tree in the linked list.
 };
-static struct sa *process_fasta_rec(struct fasta_record *fa_rec,
-                                    struct sa *next)
+static struct suf_tree *process_fasta_rec(struct fasta_record *fa_rec,
+                                          struct suf_tree *next)
 {
-    struct sa *sa = cstr_malloc(sizeof *sa);
-    sa->chr_name = fa_rec->name;
-    sa->x = fa_rec->seq;
-    sa->sa = cstr_alloc_uislice(sa->x.len);
-
-    cstr_uislice *u_buf = cstr_alloc_uislice(sa->x.len);
-    bool map_ok = cstr_alphabet_map_to_uint(*u_buf, fa_rec->seq, &ALPHA);
+    struct suf_tree *suf_tree = cstr_malloc(sizeof *suf_tree);
+    suf_tree->chr_name = fa_rec->name;
+    suf_tree->x_buf = cstr_alloc_sslice(fa_rec->seq.len);
+    bool map_ok = cstr_alphabet_map(*suf_tree->x_buf, fa_rec->seq, &ALPHA);
     if (!map_ok)
     {
         abort(); // A little drastic, but with the current choice it is all that I can do.
     }
-    cstr_sais(*sa->sa, CSTR_SLICE_CONST_CAST(*u_buf), &ALPHA);
-
-    sa->next = next;
-
-    free(u_buf); // We don't need this one any more.
-
-    return sa;
+    suf_tree->st = cstr_mccreight_suffix_tree(&ALPHA, CSTR_SLICE_CONST_CAST(*suf_tree->x_buf));
+    suf_tree->next = next;
+    return suf_tree;
 }
-static void free_sa(struct sa *sa)
+static void free_suf_trees(struct suf_tree *suf_tree)
 {
-    struct sa *next;
-    for (; sa; sa = next)
+    struct suf_tree *next;
+    for (; suf_tree; suf_tree = next)
     {
-        next = sa->next;
-        free(sa->sa);
-        free(sa);
+        next = suf_tree->next;
+        // don't free chr_name, we don't own it.
+        free(suf_tree->x_buf);
+        cstr_free_suffix_tree(suf_tree->st);
+        free(suf_tree);
     }
 }
 
@@ -68,10 +63,10 @@ int main(int argc, char const *argv[])
     cstr_init_alphabet(&ALPHA, letters);
 
     struct fasta_records *genome = load_fasta_records(genome_fname);
-    struct sa *suf_arrays = 0;
+    struct suf_tree *s_trees = 0;
     for (struct fasta_record *fa_rec = fasta_records(genome); fa_rec; fa_rec = fa_rec->next)
     {
-        suf_arrays = process_fasta_rec(fa_rec, suf_arrays);
+        s_trees = process_fasta_rec(fa_rec, s_trees);
     }
 
     struct fastq_iter fqiter;
@@ -90,13 +85,13 @@ int main(int argc, char const *argv[])
     {
         snprintf(cigarbuf, CIGAR_BUF_SIZE, "%lldM", fqrec.seq.len);
 
-        for (struct sa *sa = suf_arrays; sa; sa = sa->next)
+        for (struct suf_tree *suf_tree = s_trees; suf_tree; suf_tree = suf_tree->next)
         {
-            cstr_exact_matcher *m = cstr_sa_bsearch(*sa->sa, sa->x, fqrec.seq);
+            cstr_exact_matcher *m = cstr_st_exact_search_map(suf_tree->st, fqrec.seq);
             for (long long i = cstr_exact_next_match(m); i != -1; i = cstr_exact_next_match(m))
             {
                 print_sam_line(stdout, (const char *)fqrec.name.buf,
-                               sa->chr_name, i, cigarbuf,
+                               suf_tree->chr_name, i, cigarbuf,
                                (const char *)fqrec.seq.buf);
             }
             cstr_free_exact_matcher(m);
@@ -104,7 +99,7 @@ int main(int argc, char const *argv[])
     }
 
     fclose(fq);
-    free_sa(suf_arrays);
+    free_suf_trees(s_trees);
     free_fasta_records(genome);
 
     return 0;
