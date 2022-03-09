@@ -237,19 +237,6 @@ bit_vector_test/fast:
 .PHONY : bit_vector_test/fast
 
 #=============================================================================
-# Target rules for targets named bwt_test
-
-# Build rule for target.
-bwt_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bwt_test
-.PHONY : bwt_test
-
-# fast build rule for target.
-bwt_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/build
-.PHONY : bwt_test/fast
-
-#=============================================================================
 # Target rules for targets named cstr_test
 
 # Build rule for target.
@@ -261,19 +248,6 @@ cstr_test: cmake_check_build_system
 cstr_test/fast:
 	$(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/cstr_test.dir/build.make src/test/CMakeFiles/cstr_test.dir/build
 .PHONY : cstr_test/fast
-
-#=============================================================================
-# Target rules for targets named li_durbin_test
-
-# Build rule for target.
-li_durbin_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 li_durbin_test
-.PHONY : li_durbin_test
-
-# fast build rule for target.
-li_durbin_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/build
-.PHONY : li_durbin_test/fast
 
 #=============================================================================
 # Target rules for targets named sa_test
@@ -425,10 +399,8 @@ help:
 	@echo "... test"
 	@echo "... alphabet_test"
 	@echo "... bit_vector_test"
-	@echo "... bwt_test"
 	@echo "... cstr"
 	@echo "... cstr_test"
-	@echo "... li_durbin_test"
 	@echo "... sa"
 	@echo "... sa_test"
 	@echo "... sais_test"

@@ -214,20 +214,6 @@ bit_vector_test/fast:
 .PHONY : bit_vector_test/fast
 
 # Convenience name for target.
-src/test/CMakeFiles/bwt_test.dir/rule:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/bwt_test.dir/rule
-.PHONY : src/test/CMakeFiles/bwt_test.dir/rule
-
-# Convenience name for target.
-bwt_test: src/test/CMakeFiles/bwt_test.dir/rule
-.PHONY : bwt_test
-
-# fast build rule for target.
-bwt_test/fast:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/build
-.PHONY : bwt_test/fast
-
-# Convenience name for target.
 src/test/CMakeFiles/cstr_test.dir/rule:
 	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/cstr_test.dir/rule
 .PHONY : src/test/CMakeFiles/cstr_test.dir/rule
@@ -240,20 +226,6 @@ cstr_test: src/test/CMakeFiles/cstr_test.dir/rule
 cstr_test/fast:
 	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/cstr_test.dir/build.make src/test/CMakeFiles/cstr_test.dir/build
 .PHONY : cstr_test/fast
-
-# Convenience name for target.
-src/test/CMakeFiles/li_durbin_test.dir/rule:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test/CMakeFiles/li_durbin_test.dir/rule
-.PHONY : src/test/CMakeFiles/li_durbin_test.dir/rule
-
-# Convenience name for target.
-li_durbin_test: src/test/CMakeFiles/li_durbin_test.dir/rule
-.PHONY : li_durbin_test
-
-# fast build rule for target.
-li_durbin_test/fast:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/build
-.PHONY : li_durbin_test/fast
 
 # Convenience name for target.
 src/test/CMakeFiles/sa_test.dir/rule:
@@ -345,30 +317,6 @@ bit_vector_test.c.s:
 	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bit_vector_test.dir/build.make src/test/CMakeFiles/bit_vector_test.dir/bit_vector_test.c.s
 .PHONY : bit_vector_test.c.s
 
-bwt_test.o: bwt_test.c.o
-.PHONY : bwt_test.o
-
-# target to build an object file
-bwt_test.c.o:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/bwt_test.c.o
-.PHONY : bwt_test.c.o
-
-bwt_test.i: bwt_test.c.i
-.PHONY : bwt_test.i
-
-# target to preprocess a source file
-bwt_test.c.i:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/bwt_test.c.i
-.PHONY : bwt_test.c.i
-
-bwt_test.s: bwt_test.c.s
-.PHONY : bwt_test.s
-
-# target to generate assembly for a file
-bwt_test.c.s:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/bwt_test.dir/build.make src/test/CMakeFiles/bwt_test.dir/bwt_test.c.s
-.PHONY : bwt_test.c.s
-
 cstr_test.o: cstr_test.c.o
 .PHONY : cstr_test.o
 
@@ -392,30 +340,6 @@ cstr_test.s: cstr_test.c.s
 cstr_test.c.s:
 	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/cstr_test.dir/build.make src/test/CMakeFiles/cstr_test.dir/cstr_test.c.s
 .PHONY : cstr_test.c.s
-
-li_durbin_test.o: li_durbin_test.c.o
-.PHONY : li_durbin_test.o
-
-# target to build an object file
-li_durbin_test.c.o:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/li_durbin_test.c.o
-.PHONY : li_durbin_test.c.o
-
-li_durbin_test.i: li_durbin_test.c.i
-.PHONY : li_durbin_test.i
-
-# target to preprocess a source file
-li_durbin_test.c.i:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/li_durbin_test.c.i
-.PHONY : li_durbin_test.c.i
-
-li_durbin_test.s: li_durbin_test.c.s
-.PHONY : li_durbin_test.s
-
-# target to generate assembly for a file
-li_durbin_test.c.s:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/test/CMakeFiles/li_durbin_test.dir/build.make src/test/CMakeFiles/li_durbin_test.dir/li_durbin_test.c.s
-.PHONY : li_durbin_test.c.s
 
 sa_test.o: sa_test.c.o
 .PHONY : sa_test.o
@@ -528,9 +452,7 @@ help:
 	@echo "... test"
 	@echo "... alphabet_test"
 	@echo "... bit_vector_test"
-	@echo "... bwt_test"
 	@echo "... cstr_test"
-	@echo "... li_durbin_test"
 	@echo "... sa_test"
 	@echo "... sais_test"
 	@echo "... skew_test"
@@ -541,15 +463,9 @@ help:
 	@echo "... bit_vector_test.o"
 	@echo "... bit_vector_test.i"
 	@echo "... bit_vector_test.s"
-	@echo "... bwt_test.o"
-	@echo "... bwt_test.i"
-	@echo "... bwt_test.s"
 	@echo "... cstr_test.o"
 	@echo "... cstr_test.i"
 	@echo "... cstr_test.s"
-	@echo "... li_durbin_test.o"
-	@echo "... li_durbin_test.i"
-	@echo "... li_durbin_test.s"
 	@echo "... sa_test.o"
 	@echo "... sa_test.i"
 	@echo "... sa_test.s"

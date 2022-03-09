@@ -233,30 +233,6 @@ bit_vector.c.s:
 	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/bit_vector.c.s
 .PHONY : bit_vector.c.s
 
-bwt.o: bwt.c.o
-.PHONY : bwt.o
-
-# target to build an object file
-bwt.c.o:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/bwt.c.o
-.PHONY : bwt.c.o
-
-bwt.i: bwt.c.i
-.PHONY : bwt.i
-
-# target to preprocess a source file
-bwt.c.i:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/bwt.c.i
-.PHONY : bwt.c.i
-
-bwt.s: bwt.c.s
-.PHONY : bwt.s
-
-# target to generate assembly for a file
-bwt.c.s:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/bwt.c.s
-.PHONY : bwt.c.s
-
 cstr.o: cstr.c.o
 .PHONY : cstr.o
 
@@ -280,54 +256,6 @@ cstr.s: cstr.c.s
 cstr.c.s:
 	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/cstr.c.s
 .PHONY : cstr.c.s
-
-exact.o: exact.c.o
-.PHONY : exact.o
-
-# target to build an object file
-exact.c.o:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/exact.c.o
-.PHONY : exact.c.o
-
-exact.i: exact.c.i
-.PHONY : exact.i
-
-# target to preprocess a source file
-exact.c.i:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/exact.c.i
-.PHONY : exact.c.i
-
-exact.s: exact.c.s
-.PHONY : exact.s
-
-# target to generate assembly for a file
-exact.c.s:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/exact.c.s
-.PHONY : exact.c.s
-
-li_durbin.o: li_durbin.c.o
-.PHONY : li_durbin.o
-
-# target to build an object file
-li_durbin.c.o:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/li_durbin.c.o
-.PHONY : li_durbin.c.o
-
-li_durbin.i: li_durbin.c.i
-.PHONY : li_durbin.i
-
-# target to preprocess a source file
-li_durbin.c.i:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/li_durbin.c.i
-.PHONY : li_durbin.c.i
-
-li_durbin.s: li_durbin.c.s
-.PHONY : li_durbin.s
-
-# target to generate assembly for a file
-li_durbin.c.s:
-	cd /Users/mailund/Classroom/solutions/gsa/sa-c-cmake && $(MAKE) $(MAKESILENT) -f src/cstr/CMakeFiles/cstr.dir/build.make src/cstr/CMakeFiles/cstr.dir/li_durbin.c.s
-.PHONY : li_durbin.c.s
 
 sais.o: sais.c.o
 .PHONY : sais.o
@@ -421,18 +349,9 @@ help:
 	@echo "... bit_vector.o"
 	@echo "... bit_vector.i"
 	@echo "... bit_vector.s"
-	@echo "... bwt.o"
-	@echo "... bwt.i"
-	@echo "... bwt.s"
 	@echo "... cstr.o"
 	@echo "... cstr.i"
 	@echo "... cstr.s"
-	@echo "... exact.o"
-	@echo "... exact.i"
-	@echo "... exact.s"
-	@echo "... li_durbin.o"
-	@echo "... li_durbin.i"
-	@echo "... li_durbin.s"
 	@echo "... sais.o"
 	@echo "... sais.i"
 	@echo "... sais.s"

@@ -519,39 +519,5 @@ void cstr_sais(cstr_suffix_array sa, cstr_const_uislice x, cstr_alphabet *alpha)
 
 cstr_exact_matcher *cstr_sa_bsearch(cstr_suffix_array sa, cstr_const_sslice x, cstr_const_sslice p);
 
-// ==== Burrows-Wheeler transform =================================
-
-void cstr_bwt(cstr_sslice bwt, cstr_const_sslice x, cstr_suffix_array sa);
-void cstr_reverse_bwt(cstr_sslice rev, cstr_const_sslice bwt, cstr_suffix_array sa);
-
-typedef struct cstr_bwt_preproc cstr_bwt_preproc; // Preprocessed tables for searching using FM-index
-// Does all the preprocessing, including mapping the alphabet, building the suffix array,
-// and building the tables for searching. You could save some time, if you already did
-// some of the preprocessing elsewhere, by writing a function that does somewhat less.
-cstr_bwt_preproc *cstr_bwt_preprocess(cstr_const_sslice x);
-
-// This matcher does not assume that p is already mapped. It does assume that you have built
-// the preproc tables.
-cstr_exact_matcher *cstr_fmindex_search(cstr_bwt_preproc *preproc, cstr_const_sslice p);
-
-void cstr_free_bwt_preproc(struct cstr_bwt_preproc *preproc);
-
-// ==== Li-Durbin approximative matching ==========================
-typedef struct cstr_li_durbin_preproc cstr_li_durbin_preproc;
-cstr_li_durbin_preproc *cstr_li_durbin_preprocess(cstr_const_sslice x);
-void cstr_free_li_durbin_preproc(cstr_li_durbin_preproc *preproc);
-
-typedef struct cstr_approx_match
-{
-  long long pos;     // -1 if no more matches
-  const char *cigar; // CIGAR, as a C string we can readily print.
-} cstr_approx_match;
-
-typedef struct cstr_approx_matcher cstr_approx_matcher;
-cstr_approx_matcher *cstr_li_durbin_search(cstr_li_durbin_preproc *preproc,
-                                           cstr_const_sslice p, long long d);
-cstr_approx_match cstr_approx_next_match(cstr_approx_matcher *matcher);
-void cstr_free_approx_matcher(cstr_approx_matcher *matcher);
-
 #undef INLINE
 #endif // CSTR_INCLUDED
