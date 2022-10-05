@@ -5,3 +5,4 @@ runs:
   steps:
     - name: Checking
       run:  make test
+      shell: bash
