@@ -1,0 +1,7 @@
+name: Language specific unit tests
+description: Run C/CMake unit tests
+runs:
+  using: composite
+  steps:
+    - name: Checking
+      run:  make test
